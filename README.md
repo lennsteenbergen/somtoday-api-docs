@@ -1,6 +1,8 @@
 # SOMtoday REST API docs
 
-#### Community
+#### Dev Community
+
+In case you have any questions about the docs or want to chat with other, you can join the community. There are several channels related to the SOMtoday API and other general purpose channels.
 
 ##### Matrix (bridged to Discord)
 
