@@ -115,13 +115,8 @@ I suppose it returns all students the current user has access to (so if a school
 | Name          | Type      | Value                 |
 |---------------|-----------|-----------------------|
 | Authorization | Header    | Bearer [access_token] |
-| additional    | Parameter | pasfoto               |
-
-The additional parameter is an optional GET parameter.
 
 #### Returns
-
-Depending on the additional parameters, some of the items in the result may not be present. Assuming `pasfoto` is set:
 
 ```json
 {
@@ -140,28 +135,21 @@ Depending on the additional parameters, some of the items in the result may not 
         {
           "full": "leerling.RLeerlingPrimer:READ:INSTANCE(1234)",
           "type": "leerling.RLeerlingPrimer",
-          "operations": ["READ"],
-          "instances": ["INSTANCE(1234)"]
+          "operations": [
+            "READ"
+          ],
+          "instances": [
+            "INSTANCE(1234)"
+          ]
         }
       ],
-      "additionalObjects": {
-        "pasfoto": {
-          "$type": "leerling.RLeerlingpasfoto",
-          "links": [
-            {
-              "id": 1234,
-              "rel": "self"
-            }
-          ],
-          "permissions": [],
-          "additionalObjects": {},
-          "datauri": "<base64 image>"
-        }
-      },
-      "leerlingnummer": 450000,
-      "roepnaam": "Eli",
-      "achternaam": "Saado",
-      "email": "450000@live.bc-enschede.nl",
+      "additionalObjects": {},
+      "UUID": "00000000-0000-0000-0000-000000000000",
+      "leerlingnummer": 402638,
+      "roepnaam": "Lenn",
+      "achternaam": "Steenbergen",
+      "pasfotoUrl": "https://api.somtoday.nl/rest/v1/pasfoto/0792a6e2-9833-45e8-b1eb-1498cf22f10d/AbC123dEf256gHi7890AbC123dEf256g",
+      "email": "lennsteenbergen@leerling.school.nl",
       "mobielNummer": "06-00000000",
       "geboortedatum": "2000-00-00",
       "geslacht": "Man"
@@ -192,30 +180,41 @@ curl "$school_url/rest/v1/leerlingen" -H "Authorization: Bearer $token" -H "Acce
 
 ```json
 {
-  "links": [
+  "items": [
     {
-      "id": 1234,
-      "rel": "self",
-      "type": "leerling.RLeerling",
-      "href": "https://api.somtoday.nl/rest/v1/leerlingen/1234"
+      "$type": "leerling.RLeerling",
+      "links": [
+        {
+          "id": 1234,
+          "rel": "self",
+          "type": "leerling.RLeerling",
+          "href": "https://api.somtoday.nl/rest/v1/leerlingen/1234"
+        }
+      ],
+      "permissions": [
+        {
+          "full": "leerling.RLeerlingPrimer:READ:INSTANCE(1234)",
+          "type": "leerling.RLeerlingPrimer",
+          "operations": [
+            "READ"
+          ],
+          "instances": [
+            "INSTANCE(1234)"
+          ]
+        }
+      ],
+      "additionalObjects": {},
+      "UUID": "00000000-0000-0000-0000-000000000000",
+      "leerlingnummer": 402638,
+      "roepnaam": "Lenn",
+      "achternaam": "Steenbergen",
+      "pasfotoUrl": "https://api.somtoday.nl/rest/v1/pasfoto/0792a6e2-9833-45e8-b1eb-1498cf22f10d/AbC123dEf256gHi7890AbC123dEf256g",
+      "email": "lennsteenbergen@leerling.school.nl",
+      "mobielNummer": "06-00000000",
+      "geboortedatum": "2000-00-00",
+      "geslacht": "Man"
     }
-  ],
-  "permissions": [
-    {
-      "full": "leerling.RLeerlingPrimer:READ:INSTANCE(1234)",
-      "type": "leerling.RLeerlingPrimer",
-      "operations": ["READ"],
-      "instances": ["INSTANCE(1234)"]
-    }
-  ],
-  "additionalObjects": {},
-  "leerlingnummer": 450000,
-  "roepnaam": "Eli",
-  "achternaam": "Saado",
-  "email": "450000@live.bc-enschede.nl",
-  "mobielNummer": "06-00000000",
-  "geboortedatum": "2000-00-00",
-  "geslacht": "Man"
+  ]
 }
 ```
 
